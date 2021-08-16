@@ -1,13 +1,13 @@
 import { IDiscount } from "../interfaces/IDiscount";
-import { Discount } from "./Discount";
 import { ShoppingCart } from "./ShoppingCart";
 
 const discountMock = () => {
-  class DiscountMock extends Discount implements IDiscount {
-    percentage = 0;
-  }
+  const discount: IDiscount = {
+    percentage: 0,
+    calculate: jest.fn().mockImplementation((amount) => amount),
+  };
 
-  return new DiscountMock();
+  return discount;
 };
 
 describe("ShoppingCart", () => {
